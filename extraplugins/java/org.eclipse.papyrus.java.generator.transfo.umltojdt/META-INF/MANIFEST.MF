@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Export-Package: org.eclipse.papyrus.java.generator.transfo.umltojdt
+Bundle-SymbolicName: org.eclipse.papyrus.java.generator.transfo.umltojdt
+Bundle-Version: 1.1.4.qualifier
+Bundle-Name: %pluginName
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: %providerName

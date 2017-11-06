@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.eclipse.papyrus.uml.alf.extra.feature" label="Papyrus ALF Properties View Integration (Incubation)" provider-name="Eclipse Modeling Project" version="0.7.0.qualifier">
+
+   <copyright url="http://www.example.com/copyright">
+      Copyright (c) 2015 CEA LIST.
+   
+  All rights reserved.   This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License
+  v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.papyrus.extra.moka.feature" version="1.1.4.qualifier"/>
+   </requires>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.uml.alf.text" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.uml.alf.transaction" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.uml.alf.properties.xtext" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.uml.alf.preferences" install-size="0" unpack="false" version="0.0.0"/>
+
+</feature>

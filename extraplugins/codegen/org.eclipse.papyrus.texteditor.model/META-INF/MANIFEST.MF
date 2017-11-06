@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-Description: %pluginDescription
+Bundle-SymbolicName: org.eclipse.papyrus.texteditor.model;singleton:=true
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: %providerName
+Export-Package: org.eclipse.papyrus.texteditor.model.texteditormodel,
+ org.eclipse.papyrus.texteditor.model.texteditormodel.impl,
+ org.eclipse.papyrus.texteditor.model.texteditormodel.util
+Bundle-Version: 1.1.4.qualifier
+Bundle-Name: %pluginName
+Bundle-ClassPath: .
+Bundle-Localization: plugin

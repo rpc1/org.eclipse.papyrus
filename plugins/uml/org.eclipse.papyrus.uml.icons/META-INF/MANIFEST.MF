@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Export-Package: org.eclipse.papyrus.uml.icons
+Bundle-SymbolicName: org.eclipse.papyrus.uml.icons;singleton:=true
+Bundle-Version: 1.1.4.qualifier
+Bundle-Name: %pluginName
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.eclipse.papyrus.uml.icons.Activator
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: %providerName

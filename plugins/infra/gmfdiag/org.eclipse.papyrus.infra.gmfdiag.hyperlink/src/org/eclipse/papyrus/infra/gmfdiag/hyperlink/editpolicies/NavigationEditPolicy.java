@@ -1,0 +1,456 @@
+/*****************************************************************************
+ * Copyright (c) 2010, 2015 Atos Origin, CEA, Christian W. Damus, and others.
+ *
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *  Mathieu Velten (Atos Origin) mathieu.velten@atosorigin.com - Initial API and implementation
+ *  Patrick Tessier (CEA LIST)-modification
+ *  Christian W. Damus (CEA) - bug 421411
+ *  Benoit Maggi (CEA LIST) benoit.maggi@cea.fr - Bug 454386
+ *  Christian W. Damus - bug 460583
+ *****************************************************************************/
+package org.eclipse.papyrus.infra.gmfdiag.hyperlink.editpolicies;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.UnexecutableCommand;
+import org.eclipse.gmf.runtime.common.core.command.CommandResult;
+import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
+import org.eclipse.gmf.runtime.common.core.command.ICommand;
+import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.OpenEditPolicy;
+import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
+import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.papyrus.commands.CreationCommandDescriptor;
+import org.eclipse.papyrus.commands.INonDirtying;
+import org.eclipse.papyrus.commands.util.NonDirtyingUtils;
+import org.eclipse.papyrus.infra.core.editorsfactory.IPageIconsRegistry;
+import org.eclipse.papyrus.infra.core.editorsfactory.PageIconsRegistry;
+import org.eclipse.papyrus.infra.core.sasheditor.contentprovider.IPageManager;
+import org.eclipse.papyrus.infra.core.services.ServiceException;
+import org.eclipse.papyrus.infra.emf.utils.ServiceUtilsForEObject;
+import org.eclipse.papyrus.infra.gmfdiag.common.utils.DiagramUtils;
+import org.eclipse.papyrus.infra.gmfdiag.common.utils.ServiceUtilsForEditPart;
+import org.eclipse.papyrus.infra.gmfdiag.hyperlink.Activator;
+import org.eclipse.papyrus.infra.gmfdiag.navigation.ExistingNavigableElement;
+import org.eclipse.papyrus.infra.gmfdiag.navigation.NavigableElement;
+import org.eclipse.papyrus.infra.gmfdiag.navigation.NavigationHelper;
+import org.eclipse.papyrus.infra.gmfdiag.navigation.preference.INavigationPreferenceConstant;
+import org.eclipse.papyrus.infra.hyperlink.helper.AbstractHyperLinkHelper;
+import org.eclipse.papyrus.infra.hyperlink.helper.HyperLinkHelperFactory;
+import org.eclipse.papyrus.infra.hyperlink.object.HyperLinkEditor;
+import org.eclipse.papyrus.infra.hyperlink.object.HyperLinkObject;
+import org.eclipse.papyrus.infra.hyperlink.ui.EditorNavigationDialog;
+import org.eclipse.papyrus.infra.hyperlink.util.HyperLinkHelpersRegistrationUtil;
+
+/**
+ * This class is used to open a new diagram when the double click is detected.
+ * It is dependent of papyrus environment
+ */
+public class NavigationEditPolicy extends OpenEditPolicy {
+
+	public static final String NAVIGATION_POLICY = "NavigationEditPolicy";
+
+	public NavigationEditPolicy() {
+	}
+
+	/**
+	 * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.OpenEditPolicy#getOpenCommand(org.eclipse.gef.Request)
+	 *
+	 * @param request
+	 * @return
+	 */
+	@Override
+	protected Command getOpenCommand(Request request) {
+		Command openCommand = getHyperlinkOpenCommand(request);
+		if (openCommand == null || !openCommand.canExecute()) {
+			openCommand = getShortCutOpenCommand(request);
+		}
+		return openCommand;
+	}
+
+
+	/**
+	 *
+	 * @param request
+	 * @return get the command to open a new diagram
+	 */
+	protected Command getHyperlinkOpenCommand(Request request) {
+		final IGraphicalEditPart gep;
+
+		// in order to obtain the list of default diagram we need to fin the
+		// edit part that refers to default diagram
+
+		// if this a label of a compartment, the good editpart is the parent
+		if ((IGraphicalEditPart) getHost() instanceof CompartmentEditPart) {
+			gep = (IGraphicalEditPart) getHost().getParent();
+		} else {
+
+			gep = (IGraphicalEditPart) getHost();
+		}
+		final EObject semanticElement = gep.resolveSemanticElement();
+
+		// navigable element by using heuristic
+		List<NavigableElement> navElements = null;
+
+		// defaultHyperlinks
+		final ArrayList<HyperLinkObject> defaultHyperLinkObject = new ArrayList<HyperLinkObject>();
+		final ArrayList<HyperLinkObject> hyperLinkObjectList;
+		// Diagrams that will be found by using heuristic
+		HashMap<NavigableElement, List<Diagram>> existingDiagrams = new HashMap<NavigableElement, List<Diagram>>();
+
+		if (semanticElement == null) {
+			return UnexecutableCommand.INSTANCE;
+		}
+		// initialition of code to extract hyperlinks, in the future to do with
+		// extension points
+		ArrayList<AbstractHyperLinkHelper> hyperLinkHelpers = new ArrayList<AbstractHyperLinkHelper>();
+		// hyperLinkHelpers.add(new DiagramHyperLinkHelper());
+		// hyperLinkHelpers.add(new DocumentHyperLinkHelper());
+		// hyperLinkHelpers.add(new WebHyperLinkHelper());
+		hyperLinkHelpers.addAll(HyperLinkHelpersRegistrationUtil.INSTANCE.getAllRegisteredHyperLinkHelper());
+		final HyperLinkHelperFactory hyperlinkHelperFactory = new HyperLinkHelperFactory(hyperLinkHelpers);
+
+		try {
+			// fill the list of default hyperlinks
+			hyperLinkObjectList = (ArrayList<HyperLinkObject>) hyperlinkHelperFactory.getAllreferenced(gep.getNotationView());
+
+			Iterator<HyperLinkObject> iterator = hyperLinkObjectList.iterator();
+			while (iterator.hasNext()) {
+				HyperLinkObject hyperlinkObject = iterator.next();
+				if (hyperlinkObject.getIsDefault()) {
+
+					defaultHyperLinkObject.add(hyperlinkObject);
+				}
+
+			}
+
+			// fill navigation by using heuristics
+			navElements = NavigationHelper.getInstance().getAllNavigableElements(semanticElement);
+			HashMap<NavigableElement, List<CreationCommandDescriptor>> possibleCreations = new HashMap<NavigableElement, List<CreationCommandDescriptor>>();
+
+			// test which kind of navigation by consulting preference
+			String navigationKind = Activator.getDefault().getPreferenceStore().getString(INavigationPreferenceConstant.PAPYRUS_NAVIGATION_DOUBLECLICK_KIND);
+
+			// no naviagation
+			if (navigationKind.equals(INavigationPreferenceConstant.NO_NAVIGATION)) {
+				// do nothing
+				return UnexecutableCommand.INSTANCE;
+			}
+
+			// navigation by using heuristic
+			// add list of diagram navigables by using heuristic
+			if (navigationKind.equals(INavigationPreferenceConstant.EXPLICIT_IMPLICIT_NAVIGATION)) {
+				for (NavigableElement navElement : navElements) {
+					final EObject element = navElement.getElement();
+					if (navElement instanceof ExistingNavigableElement) {
+						List<Diagram> associatedDiagrams = DiagramUtils.getAssociatedDiagrams(element, null);
+
+						// ignore the current diagram
+						associatedDiagrams.remove(gep.getNotationView().getDiagram());
+						if (associatedDiagrams != null && !associatedDiagrams.isEmpty()) {
+							existingDiagrams.put(navElement, associatedDiagrams);
+						}
+					}
+				}
+
+				Iterator<List<Diagram>> iter = existingDiagrams.values().iterator();
+				while (iter.hasNext()) {
+					List<Diagram> list = iter.next();
+					Iterator<Diagram> iterDiagram = list.iterator();
+					while (iterDiagram.hasNext()) {
+						Diagram diagram = iterDiagram.next();
+						HyperLinkEditor hyperLinkEditor = new HyperLinkEditor();
+						hyperLinkEditor.setObject(diagram);
+						hyperLinkEditor.setTooltipText(diagram.getName() + " (found by heuristic)");
+						// look for if a hyperlink already exists
+						HyperLinkObject foundHyperlink = null;
+						for (int i = 0; i < defaultHyperLinkObject.size() && foundHyperlink == null; i++) {
+							if (defaultHyperLinkObject.get(i).getObject().equals(diagram)) {
+								foundHyperlink = defaultHyperLinkObject.get(i);
+							}
+						}
+						// the diagram was not into the list of existing default
+						// hyperlink
+						if (foundHyperlink == null) {
+							defaultHyperLinkObject.add(hyperLinkEditor);
+						}
+					}
+				}
+			}
+
+			// Disable to improve usability and user-friendliness.
+			// See Bug 420177: Double click on Hyperlink open diagram AND HyperLink window
+			// https://bugs.eclipse.org/bugs/show_bug.cgi?id=420177
+
+			// if(defaultHyperLinkObject.isEmpty()) {
+			// Command command = new Command() {
+			//
+			// @Override
+			// public void execute() {
+			// EObject semanticElement = gep.getNotationView().getElement();
+			// if(semanticElement instanceof EModelElement) {
+			// HyperLinkManagerShell hyperLinkManagerShell = new AdvancedHLManager(createEditorRegistry(), ((IGraphicalEditPart)getHost()).getEditingDomain(), (EModelElement)semanticElement, gep.getNotationView(), hyperlinkHelperFactory);
+			// hyperLinkManagerShell.setInput(hyperLinkObjectList);
+			// hyperLinkManagerShell.open();
+			// }
+			// }
+			// };
+			// return command;
+			// }
+
+			if (defaultHyperLinkObject.size() == 1) {
+				// open the diagram
+				final HyperLinkObject hyperlinkObject = defaultHyperLinkObject.get(0);
+				class NavigateHyperlinkCommand extends Command implements INonDirtying {
+
+					private ICommand openLinkCommand;
+
+					NavigateHyperlinkCommand() {
+						super("Navigate hyperlink");
+					}
+
+					@Override
+					public void execute() {
+
+						if (hyperlinkObject.needsOpenCommand()) {
+							try {
+								TransactionalEditingDomain editingDomain = ServiceUtilsForEditPart.getInstance().getTransactionalEditingDomain(getHost());
+								openLinkCommand = new OpenCommand(editingDomain, hyperlinkObject);
+								openLinkCommand.execute(new NullProgressMonitor(), null);
+							} catch (ServiceException ex) {
+								Activator.log.error(ex);
+							} catch (ExecutionException ex) {
+								Activator.log.error(ex);
+							}
+						} else {
+							hyperlinkObject.openLink();
+						}
+					}
+
+					@Override
+					public void undo() {
+						if (openLinkCommand != null && openLinkCommand.canUndo()) {
+							try {
+								openLinkCommand.undo(new NullProgressMonitor(), null);
+							} catch (ExecutionException ex) {
+								Activator.log.error(ex);
+							}
+						}
+					}
+
+					@Override
+					public void redo() {
+						if (openLinkCommand != null && openLinkCommand.canRedo()) {
+							try {
+								openLinkCommand.redo(new NullProgressMonitor(), null);
+							} catch (ExecutionException ex) {
+								Activator.log.error(ex);
+							}
+						}
+					}
+
+					@Override
+					public void dispose() {
+						if (openLinkCommand != null) {
+							openLinkCommand.dispose();
+							openLinkCommand = null;
+						}
+
+						super.dispose();
+					}
+				}
+				;
+				return new NavigateHyperlinkCommand();
+			}
+
+			if (defaultHyperLinkObject.size() > 1) {
+				// open a dialog to choose a diagram
+				EditorNavigationDialog diagramNavigationDialog = new EditorNavigationDialog(getHost().getViewer().getControl().getShell(), defaultHyperLinkObject, semanticElement);
+				diagramNavigationDialog.open();
+				final List<HyperLinkObject> hList = diagramNavigationDialog.getSelectedHyperlinks();
+
+				class NavigateHyperlinksCommand extends Command implements INonDirtying {
+
+					private CompositeCommand openLinksCommand;
+
+					NavigateHyperlinksCommand() {
+						super("Navigate hyperlinks");
+					}
+
+					@Override
+					public void execute() {
+						Iterator<HyperLinkObject> iter = hList.iterator();
+						openLinksCommand = NonDirtyingUtils.nonDirtyingGMFComposite("Navigate hyperlinks");
+
+						try {
+							TransactionalEditingDomain editingDomain = ServiceUtilsForEditPart.getInstance().getTransactionalEditingDomain(getHost());
+							while (iter.hasNext()) {
+								final HyperLinkObject hyperlinkObject = iter.next();
+								if (hyperlinkObject.needsOpenCommand()) {
+									openLinksCommand.add(new OpenCommand(editingDomain, hyperlinkObject));
+								} else {
+									hyperlinkObject.openLink();
+								}
+							}
+
+							if (openLinksCommand.isEmpty()) {
+								return;
+							}
+
+							openLinksCommand.execute(new NullProgressMonitor(), null);
+						} catch (ServiceException ex) {
+							Activator.log.error(ex);
+						} catch (ExecutionException ex) {
+							Activator.log.error(ex);
+						}
+					}
+
+					@Override
+					public void undo() {
+						if (openLinksCommand != null && openLinksCommand.canUndo()) {
+							try {
+								openLinksCommand.undo(new NullProgressMonitor(), null);
+							} catch (ExecutionException ex) {
+								Activator.log.error(ex);
+							}
+						}
+					}
+
+					@Override
+					public void redo() {
+						if (openLinksCommand != null && openLinksCommand.canRedo()) {
+							try {
+								openLinksCommand.redo(new NullProgressMonitor(), null);
+							} catch (ExecutionException ex) {
+								Activator.log.error(ex);
+							}
+						}
+					}
+				}
+				;
+
+				return new NavigateHyperlinksCommand();
+			}
+
+		} catch (Exception e) {
+			Activator.log.error("Impossible to load hyperlinks", e);
+		}
+		return UnexecutableCommand.INSTANCE;
+	}
+
+	/**
+	 * Return the EditorRegistry for nested editor descriptors. Subclass should
+	 * implements this method in order to return the registry associated to the
+	 * extension point namespace.
+	 *
+	 * @return the EditorRegistry for nested editor descriptors
+	 */
+	protected IPageIconsRegistry createEditorRegistry() {
+		try {
+			return ServiceUtilsForEditPart.getInstance().getService(IPageIconsRegistry.class, getHost());
+		} catch (ServiceException e) {
+			// Return an empty registry always providing null;
+			return new PageIconsRegistry();
+		}
+	}
+
+	//
+	// Nested types
+	//
+
+	class OpenCommand extends AbstractTransactionalCommand implements INonDirtying {
+		private final HyperLinkObject hyperlinkObject;
+
+		OpenCommand(TransactionalEditingDomain editingDomain, HyperLinkObject hyperlinkObject) {
+			super(editingDomain, "Navigate hyperlink", null);
+
+			this.hyperlinkObject = hyperlinkObject;
+		}
+
+		@Override
+		protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+			hyperlinkObject.openLink();
+			return CommandResult.newOKCommandResult();
+		}
+	};
+
+	/**
+	 * The Class OpenDiagramCommand.
+	 */
+	private static class OpenDiagramCommand extends AbstractTransactionalCommand {
+
+		/** The diagram to open. */
+		private Diagram diagramToOpen = null;
+
+		/**
+		 * Instantiates a new open diagram command.
+		 *
+		 * @param domain
+		 *            the domain
+		 * @param diagram
+		 *            the diagram
+		 */
+		public OpenDiagramCommand(TransactionalEditingDomain domain, Diagram diagram) {
+			super(domain, "open diagram", null);
+			diagramToOpen = diagram;
+		}
+
+		/**
+		 * {@inheritedDoc}
+		 */
+		@Override
+		protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+			try {
+				IPageManager pageMngr = ServiceUtilsForEObject.getInstance().getIPageManager(diagramToOpen);
+				if (pageMngr.isOpen(diagramToOpen)) {
+					pageMngr.selectPage(diagramToOpen);
+				} else {
+					pageMngr.openPage(diagramToOpen);
+				}
+				return CommandResult.newOKCommandResult();
+			} catch (Exception e) {
+				throw new ExecutionException("Can't open diagram", e);
+			}
+		}
+	}
+
+
+	/**
+	 * Get the open command previously defined by ShortCutEditPolicy
+	 * 
+	 * @param request
+	 * @return
+	 */
+	protected Command getShortCutOpenCommand(Request request) {
+		IGraphicalEditPart host = (IGraphicalEditPart) getHost();
+		View view = host.getNotationView();
+		EObject element = (view == null) ? null : view.getElement();
+		if ((element instanceof Diagram) && (element.eResource() != null)) {
+			OpenDiagramCommand openDiagramCommand = new OpenDiagramCommand(host.getEditingDomain(), (Diagram) element);
+			return new ICommandProxy(openDiagramCommand);
+		} else {
+			return UnexecutableCommand.INSTANCE;
+		}
+	}
+
+}

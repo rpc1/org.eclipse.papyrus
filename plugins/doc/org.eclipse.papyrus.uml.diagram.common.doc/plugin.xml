@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="target/generated-eclipse-help/symbols-main-toc.xml"
+            primary="false">
+      </toc>
+      <toc
+            file="target/generated-eclipse-help/symbols-toc.xml"
+            primary="false">
+      </toc>
+      <toc
+      		file="target/generated-eclipse-help/constraint-creation-toc.xml"
+      		primary="false">
+      </toc>
+      <toc
+            file="target/generated-eclipse-help/stereotype-display-toc.xml"
+            primary="false">
+      </toc>
+   </extension>
+
+</plugin>

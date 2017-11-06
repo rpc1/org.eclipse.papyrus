@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Export-Package: org.eclipse.papyrus.layout,
+ org.eclipse.papyrus.layout.managealgorithms
+Bundle-SymbolicName: org.eclipse.papyrus.layout;singleton:=true
+Bundle-Version: 1.1.4.qualifier
+Bundle-Name: %pluginName
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.gef,
+ org.eclipse.zest.layouts,
+ org.eclipse.core.expressions
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.eclipse.papyrus.layout.Activator
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: %providerName

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.papyrus.infra.services.navigation.navigationContributor">
+      <contributor
+            contributor="org.eclipse.papyrus.uml.navigation.contributor.TypedElementNavigationContributor"
+            description="Navigates to the type of the current UML Element"
+            id="org.eclipse.papyrus.uml.navigation.typedElement"
+            label="UML Typed Element navigation">
+      </contributor>
+      <contributor
+            contributor="org.eclipse.papyrus.uml.navigation.contributor.CBANavigationContributor"
+            description="Navigates to the Behavior linked to the current UML CallBehaviourAction"
+            id="org.eclipse.papyrus.uml.navigation.callBehaviorAction"
+            label="UML Call Behavior Action navigation">
+      </contributor>
+   </extension>
+
+</plugin>

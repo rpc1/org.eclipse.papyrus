@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.eclipse.papyrus.infra.feature" label="Papyrus infra" provider-name="Eclipse Modeling Project" version="1.1.4.qualifier">
+
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
+      Copyright (c) 2012, 2015 CEA LIST, Christian W. Damus, and others.
+All rights reserved.   This program and the accompanying materials
+are made available under the terms of the Eclipse Public License
+v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.extendedtypes" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.extendedtypes.edit" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.extendedtypes.emf" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.onefile" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.ui.resources" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.tools" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.constraints" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.constraints.edit" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.constraints.editor" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.hyperlink" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.doc" install-size="0" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.psf" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.newchild" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.newchild.edit" install-size="0" unpack="false" version="0.0.0"/>
+	
+	<plugin download-size="0" id="org.eclipse.papyrus.infra.sync" install-size="0" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.elementtypesconfigurations" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.elementtypesconfigurations.edit" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.elementtypesconfigurations.emf" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.elementtypesconfigurations.invarianttypes" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.filters" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.filters.edit" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="org.eclipse.papyrus.infra.ui" install-size="0" unpack="false" version="0.0.0"/>
+
+</feature>

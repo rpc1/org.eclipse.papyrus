@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Export-Package: org.eclipse.papyrus.infra.emf.facet.queries,
+ org.eclipse.papyrus.infra.emf.facet.queries.factory,
+ org.eclipse.papyrus.infra.emf.facet.queries.parametric,
+ org.eclipse.papyrus.infra.emf.facet.queries.parametricquery,
+ org.eclipse.papyrus.infra.emf.facet.queries.parametricquery.impl,
+ org.eclipse.papyrus.infra.emf.facet.queries.parametricquery.util
+Bundle-SymbolicName: org.eclipse.papyrus.infra.emf.facet.queries;singleton:=true
+Bundle-Version: 1.1.4.qualifier
+Bundle-Name: %Bundle-Name
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.edit
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.eclipse.papyrus.infra.emf.facet.queries.Activator
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: %Bundle-Vendor
