@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2014 CEA LIST.
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *  CEA LIST - Initial API and implementation
+  * 
+  * All rights reserved. This program and the accompanying materials
+  * are made available under the terms of the Eclipse Public License v1.0
+  * which accompanies this distribution, and is available at
+  * http://www.eclipse.org/legal/epl-v10.html
+  * 
+  * Contributors:
+  *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.uml.diagram.usecase.part;
 
@@ -25,100 +25,86 @@ import org.eclipse.papyrus.uml.diagram.usecase.providers.UMLElementTypes;
  * @generated
  */
 public class UMLPaletteFactory extends PaletteFactory.Adapter {
+	//RS: New Palette generation
 
-	// RS: New Palette generation
-	// Generates the ID for the tool elements
-	// Generate the tool factory (if(ID) createtool...)
+	//Generates the ID for the tool elements
+	//Generate the tool factory (if(ID) createtool...)
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_PACKAGE = "usecase.tool.package";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_SUBJECT = "usecase.tool.subject";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_ACTOR = "usecase.tool.actor";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_USECASE = "usecase.tool.usecase";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_CONSTRAINT = "usecase.tool.constraint";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_COMMENT = "usecase.tool.comment";//$NON-NLS-1$
-
+	/**
+	 * @generated
+	 */
+	private final static String USECASE_TOOL_DATAOBJECT = "usecase.tool.dataobject";//$NON-NLS-1$
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_EXTENSIONPOINT = "usecase.tool.extensionpoint";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_ASSOCIATION = "usecase.tool.association";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_GENERALIZATION = "usecase.tool.generalization";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_DEPENDENCY = "usecase.tool.dependency";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_ABSTRACTION = "usecase.tool.abstraction";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_REALIZATION = "usecase.tool.realization";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_USAGE = "usecase.tool.usage";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_PACKAGEMERGE = "usecase.tool.packagemerge";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_PACKAGEIMPORT = "usecase.tool.packageimport";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_INCLUDE = "usecase.tool.include";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_EXTEND = "usecase.tool.extend";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	private final static String USECASE_TOOL_CONSTRAINTLINK = "usecase.tool.constraintlink";//$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
@@ -134,7 +120,6 @@ public class UMLPaletteFactory extends PaletteFactory.Adapter {
 	/**
 	 * @generated
 	 */
-	@Override
 	public Tool createTool(String toolId) {
 		if (toolId.equals(USECASE_TOOL_PACKAGE)) {
 			return createPackage1CreationTool();
@@ -153,6 +138,9 @@ public class UMLPaletteFactory extends PaletteFactory.Adapter {
 		}
 		if (toolId.equals(USECASE_TOOL_COMMENT)) {
 			return createComment6CreationTool();
+		}
+		if (toolId.equals(USECASE_TOOL_DATAOBJECT)) {
+			return createDataObject7CreationTool();
 		}
 		if (toolId.equals(USECASE_TOOL_EXTENSIONPOINT)) {
 			return createExtensionPoint1CreationTool();
@@ -200,12 +188,12 @@ public class UMLPaletteFactory extends PaletteFactory.Adapter {
 	/**
 	 * @generated
 	 */
-	@Override
 	public Object getTemplate(String templateId) {
 
 		// default return: null
 		return null;
 	}
+
 
 	/**
 	 * @generated
@@ -272,6 +260,18 @@ public class UMLPaletteFactory extends PaletteFactory.Adapter {
 		List<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(UMLElementTypes.Comment_3015);
 		types.add(UMLElementTypes.Comment_2018);
+		Tool tool = new AspectUnspecifiedTypeCreationTool(types);
+		return tool;
+	}
+
+	/**
+	 * @generated
+	 */
+	private Tool createDataObject7CreationTool() {
+		List<IElementType> types = new ArrayList<IElementType>(3);
+		types.add(UMLElementTypes.DataObject_2023);
+		types.add(UMLElementTypes.DataObject_3019);
+		types.add(UMLElementTypes.DataObject_3020);
 		Tool tool = new AspectUnspecifiedTypeCreationTool(types);
 		return tool;
 	}
@@ -406,4 +406,5 @@ public class UMLPaletteFactory extends PaletteFactory.Adapter {
 		Tool tool = new AspectUnspecifiedTypeConnectionTool(types);
 		return tool;
 	}
+
 }

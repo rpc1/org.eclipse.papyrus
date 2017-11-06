@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2014 CEA LIST.
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *  CEA LIST - Initial API and implementation
+  * 
+  * All rights reserved. This program and the accompanying materials
+  * are made available under the terms of the Eclipse Public License v1.0
+  * which accompanies this distribution, and is available at
+  * http://www.eclipse.org/legal/epl-v10.html
+  * 
+  * Contributors:
+  *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.uml.diagram.usecase.edit.parts;
 
@@ -33,7 +33,6 @@ public class UMLEditPartFactory implements EditPartFactory {
 	/**
 	 * @generated
 	 */
-	@Override
 	public EditPart createEditPart(EditPart context, Object model) {
 		if (model instanceof View) {
 			View view = (View) model;
@@ -119,6 +118,27 @@ public class UMLEditPartFactory implements EditPartFactory {
 
 			case DiagramNameEditPart.VISUAL_ID:
 				return new DiagramNameEditPart(view);
+
+			case DataObjectEditPartTN.VISUAL_ID:
+				return new DataObjectEditPartTN(view);
+
+			case DataObjectNameEditPartTN.VISUAL_ID:
+				return new DataObjectNameEditPartTN(view);
+
+			case DataObjectAppliedStereotypeEditPartTN.VISUAL_ID:
+				return new DataObjectAppliedStereotypeEditPartTN(view);
+
+			case DataObjectQualifiedNameEditPartTN.VISUAL_ID:
+				return new DataObjectQualifiedNameEditPartTN(view);
+
+			case DataObjectFloatingLabelEditPartTN.VISUAL_ID:
+				return new DataObjectFloatingLabelEditPartTN(view);
+
+			case DataObjectAsRectangleEditPartTN.VISUAL_ID:
+				return new DataObjectAsRectangleEditPartTN(view);
+
+			case DataObjectAsRectangleNameEditPartTN.VISUAL_ID:
+				return new DataObjectAsRectangleNameEditPartTN(view);
 
 			case ExtensionPointEditPart.VISUAL_ID:
 				return new ExtensionPointEditPart(view);
@@ -218,6 +238,36 @@ public class UMLEditPartFactory implements EditPartFactory {
 
 			case PackageNameEditPartCN.VISUAL_ID:
 				return new PackageNameEditPartCN(view);
+
+			case DataObjectInComponentEditPart.VISUAL_ID:
+				return new DataObjectInComponentEditPart(view);
+
+			case DataObjectInComponentNameEditPart.VISUAL_ID:
+				return new DataObjectInComponentNameEditPart(view);
+
+			case DataObjectInComponentAppliedStereotypeEditPart.VISUAL_ID:
+				return new DataObjectInComponentAppliedStereotypeEditPart(view);
+
+			case DataObjectQualifiedNameInCEditPart.VISUAL_ID:
+				return new DataObjectQualifiedNameInCEditPart(view);
+
+			case DataObjectInComponentFloatingLabelEditPart.VISUAL_ID:
+				return new DataObjectInComponentFloatingLabelEditPart(view);
+
+			case DataObjectInPackageEditPart.VISUAL_ID:
+				return new DataObjectInPackageEditPart(view);
+
+			case DataObjectInPackageNameEditPart.VISUAL_ID:
+				return new DataObjectInPackageNameEditPart(view);
+
+			case DataObjectInPackageAppliedStereotypeEditPart.VISUAL_ID:
+				return new DataObjectInPackageAppliedStereotypeEditPart(view);
+
+			case DataObjectQualifiedNameInPEditPart.VISUAL_ID:
+				return new DataObjectQualifiedNameInPEditPart(view);
+
+			case DataObjectInPackageFloatingLabelEditPart.VISUAL_ID:
+				return new DataObjectInPackageFloatingLabelEditPart(view);
 
 			case UseCasePointsEditPartTN.VISUAL_ID:
 				return new UseCasePointsEditPartTN(view);
@@ -360,16 +410,17 @@ public class UMLEditPartFactory implements EditPartFactory {
 	/**
 	 * @generated
 	 */
-	public static CellEditorLocator getTextCellEditorLocator(ITextAwareEditPart source) {
+	public static CellEditorLocator getTextCellEditorLocator(
+			ITextAwareEditPart source) {
 		if (source.getFigure() instanceof IMultilineEditableFigure) {
 			return new MultilineCellEditorLocator(
 					(IMultilineEditableFigure) source.getFigure());
-		}
-		else {
+		} else {
 			return CellEditorLocatorAccess.INSTANCE.getTextCellEditorLocator(source);
 
 		}
 	}
+
 
 	/**
 	 * @generated
@@ -398,7 +449,6 @@ public class UMLEditPartFactory implements EditPartFactory {
 		/**
 		 * @generated
 		 */
-		@Override
 		public void relocate(CellEditor celleditor) {
 			Text text = (Text) celleditor.getControl();
 			Rectangle rect = getMultilineEditableFigure().getBounds().getCopy();
@@ -414,4 +464,5 @@ public class UMLEditPartFactory implements EditPartFactory {
 			}
 		}
 	}
+
 }

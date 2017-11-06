@@ -22,7 +22,9 @@
 UseCaseDiagram Actor {
 	elementIcon:false;
 }
-
+UseCaseDiagram DataObject{
+	elementIcon:false;
+}
 TimingDiagram * {
 	gradient:none;
 }
@@ -111,6 +113,11 @@ ClassDiagram Association
 Actor
 {
 	svgFile:"platform:/plugin/org.eclipse.papyrus.infra.gmfdiag.common/icons/symbols/stickman.svg";
+}
+
+DataObject
+{
+	svgFile:"platform:/plugin/org.eclipse.papyrus.uml.diagram.usecase/icons/dataobject.svg";
 }
 
 DurationObservation 
@@ -275,6 +282,27 @@ UseCaseDiagram Actor
 }
 
 UseCaseDiagram Actor > Compartment[kind="symbol"]
+{
+    visible:true;
+}
+
+UseCaseDiagram DataObject
+{
+	displayBorder:false;
+	displayName:false;
+	diplayIcon:false;
+	displayTag:false;
+	followSVGSymbol:true;
+	maintainSymbolRatio:true;
+	transparency:100;
+	/*displayFloatingLabel:true;*/
+	maxNumberOfSymbol:1;
+	useOriginalColors:false;
+	gradient:none;
+	fillColor:white;
+}
+
+UseCaseDiagram DataObject > Compartment[kind="symbol"]
 {
     visible:true;
 }

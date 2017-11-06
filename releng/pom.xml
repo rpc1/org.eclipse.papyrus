@@ -23,10 +23,10 @@
 	
 	<modules>
 		<module>main</module>
-		<module>extra</module>
+	<!--	<module>extra</module>
 		<module>dev</module>
 		<module>main-tests</module>
-		<module>extra-tests</module>
+		<module>extra-tests</module> -->
 	</modules>
 	
 	<pluginRepositories>

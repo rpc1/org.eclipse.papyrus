@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2014 CEA LIST.
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *  CEA LIST - Initial API and implementation
+  * 
+  * All rights reserved. This program and the accompanying materials
+  * are made available under the terms of the Eclipse Public License v1.0
+  * which accompanies this distribution, and is available at
+  * http://www.eclipse.org/legal/epl-v10.html
+  * 
+  * Contributors:
+  *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.uml.diagram.usecase.providers;
 
@@ -54,6 +54,16 @@ import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.ConstraintBodyInPEditP
 import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.ConstraintInComponentNameEditPart;
 import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.ConstraintInPackageNameEditPart;
 import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.ConstraintNameEditPartTN;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectAppliedStereotypeEditPartTN;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectAsRectangleNameEditPartTN;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectFloatingLabelEditPartTN;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectInComponentAppliedStereotypeEditPart;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectInComponentFloatingLabelEditPart;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectInComponentNameEditPart;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectInPackageAppliedStereotypeEditPart;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectInPackageFloatingLabelEditPart;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectInPackageNameEditPart;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectNameEditPartTN;
 import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DefaultNamedElementNameEditPart;
 import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DependencyAppliedStereotypeEditPart;
 import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DependencyNameEditPart;
@@ -358,6 +368,78 @@ public class UMLParserProvider extends AbstractProvider implements IParserProvid
 			diagramName_5032Parser = parser;
 		}
 		return diagramName_5032Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private IParser dataObjectName_5035Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getDataObjectName_5035Parser() {
+		if (dataObjectName_5035Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					UMLPackage.eINSTANCE.getNamedElement_Name()
+			};
+			MessageFormatParser parser = new MessageFormatParser(features);
+			dataObjectName_5035Parser = parser;
+		}
+		return dataObjectName_5035Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private AppliedStereotypeParser dataObjectLabel_6057Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getDataObjectLabel_6057Parser() {
+		if (dataObjectLabel_6057Parser == null) {
+			dataObjectLabel_6057Parser = new AppliedStereotypeParser();
+		}
+		return dataObjectLabel_6057Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private IParser dataObjectName_6059Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getDataObjectName_6059Parser() {
+		if (dataObjectName_6059Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					UMLPackage.eINSTANCE.getNamedElement_Name()
+			};
+			MessageFormatParser parser = new MessageFormatParser(features);
+			dataObjectName_6059Parser = parser;
+		}
+		return dataObjectName_6059Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private IParser dataObjectName_5036Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getDataObjectName_5036Parser() {
+		if (dataObjectName_5036Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					UMLPackage.eINSTANCE.getNamedElement_Name()
+			};
+			MessageFormatParser parser = new MessageFormatParser(features);
+			dataObjectName_5036Parser = parser;
+		}
+		return dataObjectName_5036Parser;
 	}
 
 	/**
@@ -742,6 +824,112 @@ public class UMLParserProvider extends AbstractProvider implements IParserProvid
 	/**
 	 * @generated
 	 */
+	private IParser dataObjectName_5033Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getDataObjectName_5033Parser() {
+		if (dataObjectName_5033Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					UMLPackage.eINSTANCE.getNamedElement_Name()
+			};
+			MessageFormatParser parser = new MessageFormatParser(features);
+			dataObjectName_5033Parser = parser;
+		}
+		return dataObjectName_5033Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private AppliedStereotypeParser dataObjectLabel_6052Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getDataObjectLabel_6052Parser() {
+		if (dataObjectLabel_6052Parser == null) {
+			dataObjectLabel_6052Parser = new AppliedStereotypeParser();
+		}
+		return dataObjectLabel_6052Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private IParser dataObjectName_6054Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getDataObjectName_6054Parser() {
+		if (dataObjectName_6054Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					UMLPackage.eINSTANCE.getNamedElement_Name()
+			};
+			MessageFormatParser parser = new MessageFormatParser(features);
+			dataObjectName_6054Parser = parser;
+		}
+		return dataObjectName_6054Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private IParser dataObjectName_5034Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getDataObjectName_5034Parser() {
+		if (dataObjectName_5034Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					UMLPackage.eINSTANCE.getNamedElement_Name()
+			};
+			MessageFormatParser parser = new MessageFormatParser(features);
+			dataObjectName_5034Parser = parser;
+		}
+		return dataObjectName_5034Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private AppliedStereotypeParser dataObjectLabel_6055Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getDataObjectLabel_6055Parser() {
+		if (dataObjectLabel_6055Parser == null) {
+			dataObjectLabel_6055Parser = new AppliedStereotypeParser();
+		}
+		return dataObjectLabel_6055Parser;
+	}
+
+	/**
+	 * @generated
+	 */
+	private IParser dataObjectName_6056Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getDataObjectName_6056Parser() {
+		if (dataObjectName_6056Parser == null) {
+			EAttribute[] features = new EAttribute[] {
+					UMLPackage.eINSTANCE.getNamedElement_Name()
+			};
+			MessageFormatParser parser = new MessageFormatParser(features);
+			dataObjectName_6056Parser = parser;
+		}
+		return dataObjectName_6056Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	private AppliedStereotypeParser includeLabel_6030Parser;
 
 	/**
@@ -1029,6 +1217,16 @@ public class UMLParserProvider extends AbstractProvider implements IParserProvid
 		case DiagramNameEditPart.VISUAL_ID:
 			return getDiagramName_5032Parser();
 
+		case DataObjectNameEditPartTN.VISUAL_ID:
+			return getDataObjectName_5035Parser();
+		case DataObjectAppliedStereotypeEditPartTN.VISUAL_ID:
+			return getDataObjectLabel_6057Parser();
+		case DataObjectFloatingLabelEditPartTN.VISUAL_ID:
+			return getDataObjectName_6059Parser();
+
+		case DataObjectAsRectangleNameEditPartTN.VISUAL_ID:
+			return getDataObjectName_5036Parser();
+
 		case ExtensionPointEditPart.VISUAL_ID:
 			return getExtensionPoint_3007Parser();
 		case ExtensionPointInRectangleEditPart.VISUAL_ID:
@@ -1081,6 +1279,20 @@ public class UMLParserProvider extends AbstractProvider implements IParserProvid
 		case PackageNameEditPartCN.VISUAL_ID:
 			return getPackageName_5024Parser();
 
+		case DataObjectInComponentNameEditPart.VISUAL_ID:
+			return getDataObjectName_5033Parser();
+		case DataObjectInComponentAppliedStereotypeEditPart.VISUAL_ID:
+			return getDataObjectLabel_6052Parser();
+		case DataObjectInComponentFloatingLabelEditPart.VISUAL_ID:
+			return getDataObjectName_6054Parser();
+
+		case DataObjectInPackageNameEditPart.VISUAL_ID:
+			return getDataObjectName_5034Parser();
+		case DataObjectInPackageAppliedStereotypeEditPart.VISUAL_ID:
+			return getDataObjectLabel_6055Parser();
+		case DataObjectInPackageFloatingLabelEditPart.VISUAL_ID:
+			return getDataObjectName_6056Parser();
+
 		case IncludeAppliedStereotypeEditPart.VISUAL_ID:
 			return getIncludeLabel_6030Parser();
 
@@ -1129,7 +1341,6 @@ public class UMLParserProvider extends AbstractProvider implements IParserProvid
 
 	/**
 	 * Utility method that consults ParserService
-	 * 
 	 * @generated
 	 */
 	public static IParser getParser(IElementType type, EObject object, String parserHint) {
@@ -1139,14 +1350,13 @@ public class UMLParserProvider extends AbstractProvider implements IParserProvid
 	/**
 	 * @generated
 	 */
-	@Override
-	public IParser getParser(IAdaptable hint) {
+	public IParser getParser(
+			IAdaptable hint) {
 		String vid = (String) hint.getAdapter(String.class);
 		if (vid != null) {
 			return getParser(UMLVisualIDRegistry.getVisualID(vid));
 		}
-		View view =
-				(View) hint.getAdapter(View.class);
+		View view = (View) hint.getAdapter(View.class);
 		if (view != null) {
 			return getParser(UMLVisualIDRegistry.getVisualID(view));
 		}
@@ -1156,11 +1366,9 @@ public class UMLParserProvider extends AbstractProvider implements IParserProvid
 	/**
 	 * @generated
 	 */
-	@Override
 	public boolean provides(IOperation operation) {
 		if (operation instanceof GetParserOperation) {
-			IAdaptable hint =
-					((GetParserOperation) operation).getHint();
+			IAdaptable hint = ((GetParserOperation) operation).getHint();
 			if (UMLElementTypes.getElement(hint) == null) {
 				return false;
 			}
@@ -1182,7 +1390,8 @@ public class UMLParserProvider extends AbstractProvider implements IParserProvid
 		/**
 		 * @generated
 		 */
-		public HintAdapter(IElementType type, EObject object, String parserHint) {
+		public HintAdapter(IElementType type,
+				EObject object, String parserHint) {
 			super(object, parserHint);
 			assert type != null;
 			elementType = type;
@@ -1191,7 +1400,6 @@ public class UMLParserProvider extends AbstractProvider implements IParserProvid
 		/**
 		 * @generated
 		 */
-		@Override
 		public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 			if (IElementType.class.equals(adapter)) {
 				return elementType;
@@ -1199,4 +1407,5 @@ public class UMLParserProvider extends AbstractProvider implements IParserProvid
 			return super.getAdapter(adapter);
 		}
 	}
+
 }

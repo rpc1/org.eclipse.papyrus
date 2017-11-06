@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2014 CEA LIST.
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *  CEA LIST - Initial API and implementation
+  * 
+  * All rights reserved. This program and the accompanying materials
+  * are made available under the terms of the Eclipse Public License v1.0
+  * which accompanies this distribution, and is available at
+  * http://www.eclipse.org/legal/epl-v10.html
+  * 
+  * Contributors:
+  *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.uml.diagram.usecase.sheet;
 
@@ -30,7 +30,6 @@ public class UMLSheetLabelProvider extends BaseLabelProvider implements ILabelPr
 	/**
 	 * @generated
 	 */
-	@Override
 	public String getText(Object element) {
 		element = unwrap(element);
 		if (element instanceof UMLNavigatorGroup) {
@@ -43,7 +42,6 @@ public class UMLSheetLabelProvider extends BaseLabelProvider implements ILabelPr
 	/**
 	 * @generated
 	 */
-	@Override
 	public Image getImage(Object element) {
 		IElementType etype = getElementType(getView(unwrap(element)));
 		return etype == null ? null : UMLElementTypes.getImage(etype);
@@ -79,14 +77,13 @@ public class UMLSheetLabelProvider extends BaseLabelProvider implements ILabelPr
 		// For intermediate views climb up the containment hierarchy to find the one associated with an element type.
 		while (view != null) {
 			int vid = UMLVisualIDRegistry.getVisualID(view);
-			IElementType etype =
-					UMLElementTypes.getElementType(vid);
+			IElementType etype = UMLElementTypes.getElementType(vid);
 			if (etype != null) {
 				return etype;
 			}
-			view = view.eContainer() instanceof View ?
-					(View) view.eContainer() : null;
+			view = view.eContainer() instanceof View ? (View) view.eContainer() : null;
 		}
 		return null;
 	}
+
 }

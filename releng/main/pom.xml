@@ -394,7 +394,7 @@
 			<id>ep</id>
 			<layout>p2</layout>
 			<!-- updateFrom("Eclipse",0) -->
-			<url>${eclipse.download}/eclipse/updates/4.5-M-builds/M-4.5.2RC4-201602121500/</url>
+			<url>${eclipse.download}/eclipse/updates/4.5/R-4.5.2-201602121500/</url>
 		</repository>
 		<repository>
 			<id>gef</id>
@@ -436,7 +436,7 @@
 			<id>mdt-uml2</id>
 			<layout>p2</layout>
 			<!-- updateFrom("MDT UML2",0) -->
-			<url>${eclipse.download}/modeling/mdt/uml2/updates/5.1.x</url>
+			<url>file://home/bender/work/repository/uml2</url>
 		</repository>
 		<repository>
 			<id>mmt-qvto</id>

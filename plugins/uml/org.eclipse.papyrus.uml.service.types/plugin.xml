@@ -22,6 +22,7 @@
 		<elementType ref="org.eclipse.papyrus.uml.ActivityParameterNode" />
 		<elementType ref="org.eclipse.papyrus.uml.ActivityPartition" />
 		<elementType ref="org.eclipse.papyrus.uml.Actor" />
+		<elementType ref="org.eclipse.papyrus.uml.DataObject />
 		<elementType ref="org.eclipse.papyrus.uml.AddStructuralFeatureValueAction" />
 		<elementType ref="org.eclipse.papyrus.uml.AddVariableValueAction" />
 		<elementType ref="org.eclipse.papyrus.uml.AnyReceiveEvent" />
@@ -337,6 +338,8 @@
 	<command categoryId="org.eclipse.papyrus.uml.service.types.umlElementCreationCommands" description="Create a new Actor" id="org.eclipse.papyrus.uml.service.types.ActorCreateCommand" name="Create a new Actor">
 	</command>
 	
+	<command categoryId="org.eclipse.papyrus.uml.service.types.umlElementCreationCommands" description="Create a new DataObject" id="org.eclipse.papyrus.uml.service.types.ActorCreateCommand" name="Create a new DataObject">
+	</command>
 	
 	<command categoryId="org.eclipse.papyrus.uml.service.types.umlElementCreationCommands" description="Create a new AddStructuralFeatureValueAction" id="org.eclipse.papyrus.uml.service.types.AddStructuralFeatureValueActionCreateCommand" name="Create a new AddStructuralFeatureValueAction">
 	</command>
@@ -1126,6 +1129,9 @@
 		
 		
 		<image commandId="org.eclipse.papyrus.uml.service.types.ActorCreateCommand" icon="platform:/plugin/org.eclipse.uml2.uml.edit/icons/full/obj16/Actor.gif" >
+			</image>
+		
+		<image commandId="org.eclipse.papyrus.uml.service.types.ActorCreateCommand" icon="platform:/plugin/org.eclipse.uml2.uml.edit/icons/full/obj16/DataObject.gif" >
 			</image>
 		
 		

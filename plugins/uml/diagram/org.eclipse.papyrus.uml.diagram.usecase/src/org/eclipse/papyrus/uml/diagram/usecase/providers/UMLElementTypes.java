@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2014 CEA LIST.
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *  CEA LIST - Initial API and implementation
+  * 
+  * All rights reserved. This program and the accompanying materials
+  * are made available under the terms of the Eclipse Public License v1.0
+  * which accompanies this distribution, and is available at
+  * http://www.eclipse.org/legal/epl-v10.html
+  * 
+  * Contributors:
+  *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.uml.diagram.usecase.providers;
 
@@ -39,6 +39,10 @@ import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.ConstraintConstrainedE
 import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.ConstraintEditPartTN;
 import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.ConstraintInComponentEditPart;
 import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.ConstraintInPackageEditPart;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectAsRectangleEditPartTN;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectEditPartTN;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectInComponentEditPart;
+import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DataObjectInPackageEditPart;
 import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DefaultNamedElementEditPartTN;
 import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.DependencyEditPart;
 import org.eclipse.papyrus.uml.diagram.usecase.edit.parts.ExtendEditPart;
@@ -93,172 +97,154 @@ public class UMLElementTypes {
 	 * @generated
 	 */
 	public static final IElementType Package_1000 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Package_1000"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Actor_2011 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Actor_2011"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Actor_2012 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Actor_2012"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType UseCase_2013 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.UseCase_2013"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType UseCase_2014 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.UseCase_2014"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Classifier_2015 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Classifier_2015"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Package_2016 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Package_2016"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Constraint_2017 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Constraint_2017"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Comment_2018 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Comment_2018"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType NamedElement_2022 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.DefaultNamedElement_2022"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Diagram_2019 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Diagram_2019"); //$NON-NLS-1$
-
+	/**
+	 * @generated
+	 */
+	public static final IElementType DataObject_2023 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.DataObject_2023"); //$NON-NLS-1$
+	/**
+	 * @generated
+	 */
+	public static final IElementType DataObject_2024 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.DataObject_2024"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
 	public static final IElementType ExtensionPoint_3007 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.ExtensionPoint_3007"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType ExtensionPoint_3008 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.ExtensionPoint_3008"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType UseCase_3009 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.UseCase_3009"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Component_3016 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Component_3016"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Comment_3015 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Comment_3015"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Constraint_3017 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Constraint_3017"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Actor_3018 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Actor_3018"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Constraint_3010 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Constraint_3010"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Actor_3011 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Actor_3011"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType UseCase_3012 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.UseCase_3012"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Component_3013 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Component_3013"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Package_3014 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Package_3014"); //$NON-NLS-1$
-
+	/**
+	 * @generated
+	 */
+	public static final IElementType DataObject_3019 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.DataObject_3019"); //$NON-NLS-1$
+	/**
+	 * @generated
+	 */
+	public static final IElementType DataObject_3020 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.DataObject_3020"); //$NON-NLS-1$
 	/**
 	 * @generated
 	 */
 	public static final IElementType Include_4008 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Include_4008"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Extend_4009 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Extend_4009"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Generalization_4010 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Generalization_4010"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Association_4011 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Association_4011"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType ConstraintConstrainedElement_4012 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.ConstraintConstrainedElement_4012"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Dependency_4013 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Dependency_4013"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType CommentAnnotatedElement_4014 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.CommentAnnotatedElement_4014"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Abstraction_4015 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Abstraction_4015"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Usage_4016 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Usage_4016"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType Realization_4017 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.Realization_4017"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
 	public static final IElementType PackageMerge_4018 = getElementType("org.eclipse.papyrus.uml.diagram.usecase.PackageMerge_4018"); //$NON-NLS-1$
-
 	/**
 	 * @generated
 	 */
@@ -294,7 +280,7 @@ public class UMLElementTypes {
 
 	/**
 	 * Returns 'type' of the ecore object associated with the hint.
-	 *
+	 * 
 	 * @generated
 	 */
 	public static synchronized ENamedElement getElement(IAdaptable hint) {
@@ -335,6 +321,12 @@ public class UMLElementTypes {
 			elements.put(Diagram_2019, NotationPackage.eINSTANCE.getDiagram());
 
 
+			elements.put(DataObject_2023, UMLPackage.eINSTANCE.getDataObject());
+
+
+			elements.put(DataObject_2024, UMLPackage.eINSTANCE.getDataObject());
+
+
 			elements.put(ExtensionPoint_3007, UMLPackage.eINSTANCE.getExtensionPoint());
 
 
@@ -369,6 +361,12 @@ public class UMLElementTypes {
 
 
 			elements.put(Package_3014, UMLPackage.eINSTANCE.getPackage());
+
+
+			elements.put(DataObject_3019, UMLPackage.eINSTANCE.getDataObject());
+
+
+			elements.put(DataObject_3020, UMLPackage.eINSTANCE.getDataObject());
 
 
 			elements.put(Include_4008, UMLPackage.eINSTANCE.getInclude());
@@ -431,6 +429,8 @@ public class UMLElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Comment_2018);
 			KNOWN_ELEMENT_TYPES.add(NamedElement_2022);
 			KNOWN_ELEMENT_TYPES.add(Diagram_2019);
+			KNOWN_ELEMENT_TYPES.add(DataObject_2023);
+			KNOWN_ELEMENT_TYPES.add(DataObject_2024);
 			KNOWN_ELEMENT_TYPES.add(ExtensionPoint_3007);
 			KNOWN_ELEMENT_TYPES.add(ExtensionPoint_3008);
 			KNOWN_ELEMENT_TYPES.add(UseCase_3009);
@@ -443,6 +443,8 @@ public class UMLElementTypes {
 			KNOWN_ELEMENT_TYPES.add(UseCase_3012);
 			KNOWN_ELEMENT_TYPES.add(Component_3013);
 			KNOWN_ELEMENT_TYPES.add(Package_3014);
+			KNOWN_ELEMENT_TYPES.add(DataObject_3019);
+			KNOWN_ELEMENT_TYPES.add(DataObject_3020);
 			KNOWN_ELEMENT_TYPES.add(Include_4008);
 			KNOWN_ELEMENT_TYPES.add(Extend_4009);
 			KNOWN_ELEMENT_TYPES.add(Generalization_4010);
@@ -496,6 +498,10 @@ public class UMLElementTypes {
 			return NamedElement_2022;
 		case ShortCutDiagramEditPart.VISUAL_ID:
 			return Diagram_2019;
+		case DataObjectEditPartTN.VISUAL_ID:
+			return DataObject_2023;
+		case DataObjectAsRectangleEditPartTN.VISUAL_ID:
+			return DataObject_2024;
 		case ExtensionPointEditPart.VISUAL_ID:
 			return ExtensionPoint_3007;
 		case ExtensionPointInRectangleEditPart.VISUAL_ID:
@@ -520,6 +526,10 @@ public class UMLElementTypes {
 			return Component_3013;
 		case PackageEditPartCN.VISUAL_ID:
 			return Package_3014;
+		case DataObjectInComponentEditPart.VISUAL_ID:
+			return DataObject_3019;
+		case DataObjectInPackageEditPart.VISUAL_ID:
+			return DataObject_3020;
 		case IncludeEditPart.VISUAL_ID:
 			return Include_4008;
 		case ExtendEditPart.VISUAL_ID:
@@ -577,6 +587,7 @@ public class UMLElementTypes {
 			return org.eclipse.papyrus.uml.diagram.usecase.providers.UMLElementTypes.getElement(elementTypeAdapter);
 		}
 	};
+
 
 	/**
 	 * @generated

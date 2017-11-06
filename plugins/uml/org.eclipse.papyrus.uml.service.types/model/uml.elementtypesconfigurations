@@ -218,6 +218,21 @@
   </elementTypeConfigurations>
   <elementTypeConfigurations
       xsi:type="elementtypesconfigurations:MetamodelTypeConfiguration"
+      xmi:id="_6aodwMqFEeaaU8CDFYL6lg"
+      name="UML::DataObject"
+      description=""
+      identifier="org.eclipse.papyrus.uml.DataObject"
+      hint="UML::DataObject"
+      editHelperClassName="org.eclipse.papyrus.uml.service.types.helper.ElementEditHelper">
+    <iconEntry
+        xmi:id="_d506QMqGEeaaU8CDFYL6lg"
+        iconPath="/icons/full/obj16/DataObject.gif"
+        bundleId="org.eclipse.uml2.uml.edit"/>
+    <eClass
+        href="http://www.eclipse.org/uml2/5.0.0/UML#//DataObject"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations
+      xsi:type="elementtypesconfigurations:MetamodelTypeConfiguration"
       xmi:id="_ScWjU1YCEeS0WsAAtVmToA"
       name="UML::AddStructuralFeatureValueAction"
       identifier="org.eclipse.papyrus.uml.AddStructuralFeatureValueAction"
@@ -3732,12 +3747,13 @@
       inheritance="all"
       target="_SccC-1YCEeS0WsAAtVmToA"/>
   <adviceBindingsConfigurations
-  	  xmi:id="_PBjP4BM9EeW4hZNFQ_NOtQ" 
-  	  name="" description="" 
-  	  identifier="org.eclipse.papyrus.uml.advice.ConstraintContextDestroyEditHelperAdvice" 
-  	  editHelperAdviceClassName="org.eclipse.papyrus.uml.service.types.helper.advice.ConstraintContextDestroyEditHelperAdvice" 
-  	  inheritance="all" 
-  	  target="_SccC-1YCEeS0WsAAtVmToA"/>
+      xmi:id="_PBjP4BM9EeW4hZNFQ_NOtQ"
+      name=""
+      description=""
+      identifier="org.eclipse.papyrus.uml.advice.ConstraintContextDestroyEditHelperAdvice"
+      editHelperAdviceClassName="org.eclipse.papyrus.uml.service.types.helper.advice.ConstraintContextDestroyEditHelperAdvice"
+      inheritance="all"
+      target="_SccC-1YCEeS0WsAAtVmToA"/>
   <adviceBindingsConfigurations
       xmi:id="_R_pDcWT7EeSzFvTXGJPhUg"
       name="org.eclipse.papyrus.uml.advice.Classifier"

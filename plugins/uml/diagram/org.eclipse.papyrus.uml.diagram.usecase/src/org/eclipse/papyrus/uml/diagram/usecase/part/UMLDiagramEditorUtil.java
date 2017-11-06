@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2014 CEA LIST.
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *  CEA LIST - Initial API and implementation
+  * 
+  * All rights reserved. This program and the accompanying materials
+  * are made available under the terms of the Eclipse Public License v1.0
+  * which accompanies this distribution, and is available at
+  * http://www.eclipse.org/legal/epl-v10.html
+  * 
+  * Contributors:
+  *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.uml.diagram.usecase.part;
 
@@ -114,9 +114,10 @@ public class UMLDiagramEditorUtil {
 				DefaultDiagramEditorUtil.EXISTS_IN_WORKSPACE);
 	}
 
+
 	/**
 	 * Runs the wizard in a dialog.
-	 *
+	 * 
 	 * @generated
 	 */
 	public static void runWizard(Shell shell, Wizard wizard, String settingsKey) {
@@ -134,7 +135,6 @@ public class UMLDiagramEditorUtil {
 
 	/**
 	 * This method should be called within a workspace modify operation since it creates resources.
-	 * 
 	 * @generated
 	 */
 	public static Resource createDiagram(URI diagramURI, URI modelURI, IProgressMonitor progressMonitor) {
@@ -182,7 +182,6 @@ public class UMLDiagramEditorUtil {
 	 * Create a new instance of domain element associated with canvas.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private static Package createInitialModel() {
@@ -193,7 +192,6 @@ public class UMLDiagramEditorUtil {
 	 * Store model element in the resource.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private static void attachModelToResource(Package model, Resource resource) {
@@ -283,11 +281,9 @@ public class UMLDiagramEditorUtil {
 
 	/**
 	 * XXX This is quite suspicious code (especially editPartTmpHolder) and likely to be removed soon
-	 * 
 	 * @generated
 	 */
 	public static class LazyElement2ViewMap {
-
 		/**
 		 * @generated
 		 */
@@ -358,5 +354,6 @@ public class UMLDiagramEditorUtil {
 			}
 			return complete;
 		}
-	} // LazyElement2ViewMap
+	} //LazyElement2ViewMap	
+
 }

@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2014 CEA LIST.
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *  CEA LIST - Initial API and implementation
+  * 
+  * All rights reserved. This program and the accompanying materials
+  * are made available under the terms of the Eclipse Public License v1.0
+  * which accompanies this distribution, and is available at
+  * http://www.eclipse.org/legal/epl-v10.html
+  * 
+  * Contributors:
+  *  CEA LIST - Initial API and implementation
  */
 package org.eclipse.papyrus.uml.diagram.usecase.expressions;
 
@@ -22,9 +22,9 @@ import org.eclipse.ocl.Environment;
 import org.eclipse.ocl.EvaluationEnvironment;
 import org.eclipse.ocl.ParserException;
 import org.eclipse.ocl.ecore.EcoreFactory;
-import org.eclipse.ocl.ecore.OCL.Helper;
 import org.eclipse.ocl.ecore.OCLExpression;
 import org.eclipse.ocl.ecore.Variable;
+import org.eclipse.ocl.ecore.OCL.Helper;
 import org.eclipse.ocl.options.ParsingOptions;
 import org.eclipse.papyrus.uml.diagram.usecase.part.UMLDiagramEditorPlugin;
 
@@ -48,7 +48,8 @@ public class UMLOCLFactory {
 	 */
 	protected UMLOCLFactory() {
 		this.expressions = new UMLAbstractExpression[11];
-		this.expressionBodies = new String[] { "self.oclIsKindOf(uml::Actor) or self.oclIsKindOf(uml::UseCase) ", //$NON-NLS-1$
+		this.expressionBodies = new String[] {
+				"self.oclIsKindOf(uml::Actor) or self.oclIsKindOf(uml::UseCase) ", //$NON-NLS-1$
 				"self.oclIsKindOf(uml::Actor) or self.oclIsKindOf(uml::UseCase) ", //$NON-NLS-1$
 				"not self.oclIsTypeOf(uml::AssociationClass)", //$NON-NLS-1$
 				"let sourceName : String = self.memberEnd->first().name in\r\nlet targetName : String = self.memberEnd->at(2).name in\r\n\'A_\'.concat(sourceName).concat(\'_\').concat(targetName)", //$NON-NLS-1$
@@ -96,7 +97,6 @@ public class UMLOCLFactory {
 
 	/**
 	 * This is factory method, callers are responsible to keep reference to the return value if they want to reuse parsed expression
-	 * 
 	 * @generated
 	 */
 	public static UMLAbstractExpression getExpression(String body, EClassifier context, Map<String, EClassifier> environment) {
@@ -105,7 +105,6 @@ public class UMLOCLFactory {
 
 	/**
 	 * This method will become private in the next release
-	 * 
 	 * @generated
 	 */
 	public static UMLAbstractExpression getExpression(String body, EClassifier context) {
@@ -147,7 +146,6 @@ public class UMLOCLFactory {
 		/**
 		 * @generated
 		 */
-		@Override
 		@SuppressWarnings("rawtypes")
 		protected Object doEvaluate(Object context, Map env) {
 			if (oclExpression == null) {
